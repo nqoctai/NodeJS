@@ -1,20 +1,17 @@
 const express = require('express')
+const path = require('path')
+require('dotenv').config()
+const configViewEngine = require('./config/viewEngine')
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8888;
+const hostname = process.env.HOSTNAME;
+const webRoutes = require('./routes/web')
 
+app.use('/', webRoutes);
 // config template engine
-app.set('views','./src/views/')
-app.set('view engine', 'ejs')
+configViewEngine(app);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/hoidanit', (req, res) => {
-    // res.send('Hello World!')
-    res.render('sample.ejs')
-  })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});

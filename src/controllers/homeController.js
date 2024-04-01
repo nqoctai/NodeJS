@@ -9,8 +9,23 @@ const getHoiDanIT  = (req, res) => {
 }
 
 const postCreateUser = (req, res) => {
-    console.log('<<<check : req.body', req.body)
-    res.send('Create a new user')
+    console.log('<<<check : req.body', req.body);
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+    console.log('<<<email: ', email, 'name: ', name, 'city: ', city);
+
+    connection.query(
+        ` INSERT INTO 
+        Users (email, name, city)
+        VALUES (?, ?, ?)`,
+        [email , name,city],
+        function(err, results) {
+        console.log(results);
+        res.send('Create user success');
+        }
+    );
+       
 }
 
 module.exports = {

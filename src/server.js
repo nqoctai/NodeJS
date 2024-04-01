@@ -9,6 +9,10 @@ const webRoutes = require('./routes/web')
 const connection = require('./config/database')
 
 
+// config request body
+app.use(express.json( )); // Used to parse JSON bodies
+app.use(express.urlencoded( )); //Parse URL-encoded bodies
+
 app.use('/', webRoutes);
 // config template engine
 configViewEngine(app);

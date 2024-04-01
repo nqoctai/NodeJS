@@ -1,15 +1,12 @@
 const express = require('express')
-
+const { getHomePage, getHoiDanIT, postCreateUser } = require('../controllers/homeController')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send('Hello World! with Eric & nodenmon')
- });
+router.get('/', getHomePage);
   
- router.get('/hoidanit', (req, res) => {
-      // res.send('Hello World!')
-      res.render('sample.ejs')
-});
+ router.get('/hoidanit', getHoiDanIT);
+ 
+ router.post('/create-user', postCreateUser);
 
 module.exports = router
   

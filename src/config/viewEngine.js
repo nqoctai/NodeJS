@@ -6,6 +6,7 @@ const configViewEngine = (app) => {
     app.set('view engine', 'ejs')
     // config static files
     app.use(express.static(path.join('./src', 'public')));
+
 }
 
 module.exports = configViewEngine

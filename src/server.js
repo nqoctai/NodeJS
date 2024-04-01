@@ -11,7 +11,7 @@ const connection = require('./config/database')
 
 // config request body
 app.use(express.json( )); // Used to parse JSON bodies
-app.use(express.urlencoded( )); //Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 app.use('/', webRoutes);
 // config template engine
@@ -20,11 +20,13 @@ configViewEngine(app);
 
 
  // simle query
- connection.query(
-  'SELECT * FROM Users u;',
-  function(err, results, fields) {
-    console.log(">>>results = ",results); // results contains rows returned by server
-  })
+//  connection.query(
+//   'SELECT * FROM Users u;',
+//   function(err, results, fields) {
+//     console.log(">>>results = ",results); // results contains rows returned by server
+//   })
+
+  
  
 
 
